@@ -1,7 +1,8 @@
-import { Container, Label, StyledInput } from "./styles";
+import { Error, Container, Label, StyledInput } from "./styles";
 
 const Input = (props) => {
-  const { label, security, onChange, name, value } = props;
+  const { label, security, onChange, name, error } = props;
+
   return (
     <Container>
       <Label>{label}</Label>
@@ -10,6 +11,7 @@ const Input = (props) => {
         onChange={onChange}
         name={name}
       />
+      {error && <Error>{error}</Error>}
     </Container>
   );
 };

@@ -17,3 +17,9 @@ export const StyledInput = styled.input`
   border: 1px solid #dedede;
   padding: 8px;
 `;
+
+export const Error = styled.p`
+  font-size: 10px;
+  color: #faa0a0;
+  margin: 4px 0 0;
+`;
