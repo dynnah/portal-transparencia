@@ -19,6 +19,12 @@ export const registerService = async (newUser) => {
     }
     return false;
   } catch (error) {
-    console.log(error);
+    const {
+      data: { message },
+    } = error.response;
+    if (message) {
+      throw new Error(message);
+    }
+    throw new Error("Falha ao cadastrar usuário.");
   }
 };

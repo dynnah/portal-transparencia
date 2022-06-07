@@ -1,5 +1,7 @@
 import * as yup from "yup";
+import { toast } from "react-toastify";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router";
 
 import { ButtonContainer, Form, Main } from "../../components/Basic/Containers";
 import { Title } from "../../components/Basic/Typography";
@@ -24,13 +26,22 @@ const initialValues = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
   const onSubmit = async (values) => {
-    const { nome, email, senha } = values;
-    const success = await registerService({
-      nome,
-      email,
-      senha,
-    });
+    try {
+      const { nome, email, senha } = values;
+      const success = await registerService({
+        nome,
+        email,
+        senha,
+      });
+      if (success) {
+        toast.success("Usuário cadastrado com sucesso!");
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const { errors, handleChange, handleSubmit } = useFormik({
