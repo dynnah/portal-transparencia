@@ -6,6 +6,7 @@ export const loginService = async (credentials) => {
     if (response.status === 200) {
       return response.data;
     }
+    return;
   } catch (error) {
     console.log(error);
   }
@@ -26,5 +27,29 @@ export const registerService = async (newUser) => {
       throw new Error(message);
     }
     throw new Error("Falha ao cadastrar usuário.");
+  }
+};
+
+export const editProfileService = async (id, profile) => {
+  try {
+    const response = await api.put(`/usuario/${id}`, profile);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteUserService = async (id) => {
+  try {
+    const response = await api.delete(`/usuario/${id}`);
+    if (response.status === 200) {
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.log(error);
   }
 };

@@ -1,10 +1,32 @@
-import { StyledButton } from "./styles";
+import { StyledButton, StyledDangerButton } from "./styles";
 
-const Button = (props) => {
+const DefaultButton = (props) => {
   const { children, onClick, type } = props;
   return (
-    <StyledButton onClick={onClick} type={type} >{children}</StyledButton>
-  )
+    <StyledButton onClick={onClick} type={type}>
+      {children}
+    </StyledButton>
+  );
+};
+
+const DangerButton = (props) => {
+  const { children, onClick, type } = props;
+  return (
+    <StyledDangerButton onClick={onClick} type={type}>
+      {children}
+    </StyledDangerButton>
+  );
+};
+
+const Button = (props) => {
+  const { type } = props;
+
+  switch (type) {
+    case "danger":
+      return <DangerButton {...props} />;
+    default:
+      return <DefaultButton {...props} />;
+  }
 };
 
 export default Button;

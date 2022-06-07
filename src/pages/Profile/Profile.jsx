@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
+import { MdEdit } from "react-icons/md";
 
+import { EditLink } from "./styles";
 import { Main } from "../../components/Basic/Containers";
 import { Text } from "../../components/Basic/Typography";
 
@@ -8,6 +10,9 @@ const Profile = () => {
   return (
     <Main>
       <Text>Seja Bem vindo(a) {nome}</Text>
+      <EditLink to="/edit-profile">
+        <MdEdit />
+      </EditLink>
     </Main>
   );
 };
