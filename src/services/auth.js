@@ -1,3 +1,4 @@
+import { ContinuousColorLegend } from "react-vis";
 import api from "./api";
 
 export const loginService = async (credentials) => {
@@ -53,3 +54,4 @@ export const deleteUserService = async (id) => {
     console.log(error);
   }
 };
+
