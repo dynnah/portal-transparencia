@@ -43,16 +43,48 @@ class DashboardMinisterios extends React.Component {
         };
     }
 
+    dashboardGastosMinisterioEducacao() {
+        var client = new XMLHttpRequest();
+        client.open('GET', this.baseURL + '/grafico/consultaPorOrgaoSuperior?codOrgaoSuperior=26000', false);
+        client.send(null);
+        let json = JSON.parse(client.responseText);
+
+        return {
+            title: {
+                text: json.tituloGrafico
+            },
+            series: [
+                {
+                    depth: 45,
+                    data: json.data,
+                    keys: ["y", "name"],
+                    type: "bar"
+                }
+            ]
+        };
+    }
+
     render() {
         let dados = this.dashboardMinisterios();
 
         return (
-            <HighchartsReact
-                highcharts={this.highcharts}
-                constructorType={"chart"}
-                options={this.dashboardMinisterios()}
-                ref={this.chart}
-            />
+            <div style={{ "width": "70%" }}>
+                <HighchartsReact
+                    highcharts={this.highcharts}
+                    constructorType={"chart"}
+                    options={this.dashboardMinisterios()}
+                    ref={this.chart}
+                />
+                <br></br>
+                <br></br>
+                <HighchartsReact
+                    highcharts={this.highcharts}
+                    constructorType={"chart"}
+                    options={this.dashboardGastosMinisterioEducacao()}
+                    ref={this.chart}
+                />
+            </div >
+
         );
     }
 }
