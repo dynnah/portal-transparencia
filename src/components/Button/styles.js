@@ -5,11 +5,12 @@ export const StyledButton = styled.button`
   outline: none;
   padding: 15px 30px;
   border-radius: 4px;
-  background-color: #cecece;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
   transition: all 300ms ease-in-out;
   cursor: pointer;
   &:hover {
-    filter: contrast(0.5);
+    filter: contrast(1.4);
   }
 `;
 
