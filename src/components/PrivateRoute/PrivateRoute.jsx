@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Navigate, Route } from "react-router";
+import { Navigate } from "react-router";
 
 const PrivateRoute = ({ children }) => {
   const { id } = useSelector((state) => state.auth);

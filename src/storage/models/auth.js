@@ -1,7 +1,7 @@
 const auth = {
   state: {
     email: "",
-    id: "",
+    id: undefined,
     nome: "",
   },
   reducers: {
@@ -16,7 +16,7 @@ const auth = {
     logout() {
       return {
         email: "",
-        id: "",
+        id: undefined,
         nome: "",
       };
     },

@@ -29,7 +29,7 @@ const Login = () => {
     const data = await loginService(values);
     if (data) {
       dispatch.auth.setUser(data);
-      navigate("/profile");
+      navigate("/dashboard");
     }
   };
 
