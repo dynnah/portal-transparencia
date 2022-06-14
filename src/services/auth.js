@@ -44,7 +44,9 @@ export const editProfileService = async (id, profile) => {
 
 export const deleteUserService = async (id) => {
   try {
-    const response = await api.delete(`/usuario/${id}`);
+    const response = await api.delete(`/usuario`, {
+      id,
+    });
     if (response.status === 200) {
       return true;
     }
