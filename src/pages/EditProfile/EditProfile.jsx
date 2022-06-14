@@ -23,7 +23,7 @@ const EditProfile = () => {
     const data = await editProfileService(id, values);
     if (data) {
       dispatch.auth.setUser(data);
-      navigate("/profile");
+      navigate("/dashboard");
     }
   };
 
