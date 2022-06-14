@@ -85,6 +85,7 @@ const MOCKED_CHART = {
 
 class DashboardMinisterios extends Component {
   baseURL = "https://damp-sea-62257.herokuapp.com";
+  //baseURL = "http://localhost:8080";
 
   constructor() {
     super();
@@ -136,10 +137,49 @@ class DashboardMinisterios extends Component {
         {
           depth: 45,
           data: json.data,
-          keys: ["y", "name"],
+          keys: ["name"],
           type: "bar",
         },
       ],
+    };
+  }
+
+  dashboardLinhaMinisterios() {
+    var client = new XMLHttpRequest();
+    client.open(
+      "GET",
+      this.baseURL + "/grafico/consultaGraficoLinhaMinisterios",
+      false
+    );
+    client.send(null);
+    let json = JSON.parse(client.responseText);
+    console.log(json.data);
+    return {
+
+      title: {
+        text: json.tituloGrafico,
+      },
+      yAxis: {
+        title: {
+          text: "Milhões de R$",
+        },
+      },
+
+      xAxis: {
+        title: {
+          text: "Ano",
+        },
+      },
+      type: "line",
+      plotOptions: {
+        series: {
+          label: {
+            connectorAllowed: false,
+          },
+          pointStart: 2014,
+        },
+      },
+      series: json.data,
     };
   }
 
@@ -166,7 +206,7 @@ class DashboardMinisterios extends Component {
           <HighchartsReact
             highcharts={this.highcharts}
             constructorType={"chart"}
-            options={MOCKED_CHART}
+            options={this.dashboardLinhaMinisterios()}
             ref={this.chart}
           />
         </ChartContainer>

@@ -15,7 +15,7 @@ const validationSchema = Yup.object({
 });
 
 const EditProfile = () => {
-  const { id, nome } = useSelector((state) => state.auth);
+  const { email, id, nome } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { dispatch } = store;
 
@@ -37,7 +37,7 @@ const EditProfile = () => {
   });
 
   const handleDelete = async () => {
-    const success = await deleteUserService(id);
+    const success = await deleteUserService({ email, id, nome });
     if (success) {
       dispatch.auth.logout();
       navigate("/");
