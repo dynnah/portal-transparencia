@@ -3,18 +3,6 @@ import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts/highstock";
 import { ChartContainer } from "../styles";
 
-const YEARS = [
-  "2014",
-  "2015",
-  "2016",
-  "2017",
-  "2018",
-  "2019",
-  "2020",
-  "2021",
-  "2022",
-];
-
 class DashboardMinisterios extends Component {
   baseURL = "https://damp-sea-62257.herokuapp.com";
   //baseURL = "http://localhost:8080";
@@ -87,7 +75,6 @@ class DashboardMinisterios extends Component {
     let json = JSON.parse(client.responseText);
     console.log(json.data);
     return {
-
       title: {
         text: json.tituloGrafico,
       },
