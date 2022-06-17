@@ -9,6 +9,7 @@ import { deleteUserService, editProfileService } from "../../services/auth";
 import store from "../../storage";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { toast } from "react-toastify";
 
 const validationSchema = Yup.object({
   nome: Yup.string().required("O nome é obrigatório."),
@@ -39,6 +40,7 @@ const EditProfile = () => {
   const handleDelete = async () => {
     const success = await deleteUserService(id);
     if (success) {
+      toast.success("Usuário deletado com sucesso!");
       dispatch.auth.logout();
       navigate("/");
     }

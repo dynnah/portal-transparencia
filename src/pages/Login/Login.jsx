@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router";
@@ -24,9 +26,12 @@ const initialValues = {
 const Login = () => {
   const { dispatch } = store;
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (values) => {
+    setLoading(true);
     const data = await loginService(values);
+    setLoading(false);
     if (data) {
       dispatch.auth.setUser(data);
       navigate("/dashboard");
@@ -58,7 +63,9 @@ const Login = () => {
           error={errors.senha}
         />
         <ButtonContainer>
-          <Button type="submit">Login</Button>
+          <Button type="submit" loading={loading}>
+            Login
+          </Button>
         </ButtonContainer>
         <Text>
           Não possui conta?{" "}

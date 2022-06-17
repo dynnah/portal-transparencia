@@ -1,10 +1,11 @@
 import { StyledButton, StyledDangerButton } from "./styles";
 
 const DefaultButton = (props) => {
-  const { children, onClick, type } = props;
+  const { children, onClick, type, loading } = props;
+
   return (
-    <StyledButton onClick={onClick} type={type}>
-      {children}
+    <StyledButton onClick={onClick} type={type} disabled={loading}>
+      {loading ? "Carregando" : children}
     </StyledButton>
   );
 };
