@@ -12,6 +12,7 @@ import store from "../../storage";
 
 import { StyledLink } from "./styles";
 import { loginService } from "../../services/auth";
+import { toast } from "react-toastify";
 
 const validationSchema = yup.object({
   email: yup.string().email("Email inválido").required("Email é obrigatório"),
@@ -29,12 +30,17 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (values) => {
-    setLoading(true);
-    const data = await loginService(values);
-    setLoading(false);
-    if (data) {
-      dispatch.auth.setUser(data);
-      navigate("/dashboard");
+    try {
+      setLoading(true);
+      const data = await loginService(values);
+      if (data) {
+        dispatch.auth.setUser(data);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
