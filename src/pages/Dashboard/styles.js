@@ -20,6 +20,9 @@ export const ChartContainer = styled.div`
   width: 70%;
   margin: 35px 0;
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const EditLink = styled(Link)`

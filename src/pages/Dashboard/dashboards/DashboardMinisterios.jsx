@@ -39,31 +39,6 @@ class DashboardMinisterios extends Component {
     };
   }
 
-  dashboardGastosMinisterioEducacao() {
-    var client = new XMLHttpRequest();
-    client.open(
-      "GET",
-      this.baseURL + "/grafico/consultaPorOrgaoSuperior?codOrgaoSuperior=26000",
-      false
-    );
-    client.send(null);
-    let json = JSON.parse(client.responseText);
-
-    return {
-      title: {
-        text: json.tituloGrafico,
-      },
-      series: [
-        {
-          depth: 45,
-          data: json.data,
-          keys: ["name"],
-          type: "bar",
-        },
-      ],
-    };
-  }
-
   dashboardLinhaMinisterios() {
     var client = new XMLHttpRequest();
     client.open(
@@ -110,14 +85,6 @@ class DashboardMinisterios extends Component {
             highcharts={this.highcharts}
             constructorType={"chart"}
             options={this.dashboardMinisterios()}
-            ref={this.chart}
-          />
-        </ChartContainer>
-        <ChartContainer>
-          <HighchartsReact
-            highcharts={this.highcharts}
-            constructorType={"chart"}
-            options={this.dashboardGastosMinisterioEducacao()}
             ref={this.chart}
           />
         </ChartContainer>
