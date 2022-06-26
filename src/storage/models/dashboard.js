@@ -66,13 +66,27 @@ const dashboard = {
           chart: {
             width: 1000,
           },
-          series: [
-            {
-              data: data,
-              keys: ["name"],
-              type: "bar",
+          yAxis: {
+            title: {
+              text: "Milhões de R$",
             },
-          ],
+          },
+
+          xAxis: {
+            title: {
+              text: "Ano",
+            },
+          },
+          type: "line",
+          plotOptions: {
+            series: {
+              label: {
+                connectorAllowed: false,
+              },
+              pointStart: 2014,
+            },
+          },
+          series: data,
         },
       };
     },
@@ -86,14 +100,9 @@ const dashboard = {
           },
           chart: {
             width: 1000,
+            type: "bar",
           },
-          series: [
-            {
-              data: data,
-              keys: ["name"],
-              type: "bar",
-            },
-          ],
+          series: data,
         },
       };
     },
