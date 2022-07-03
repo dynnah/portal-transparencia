@@ -5,6 +5,8 @@ const dashboard = {
     functions: {},
     timeline: {},
     comparation: {},
+    byYear: {},
+    compareByYears: {},
   },
   reducers: {
     setMinisterios(state, payload) {
@@ -103,6 +105,49 @@ const dashboard = {
             type: "bar",
           },
           series: data,
+        },
+      };
+    },
+    setByYearData(state, payload) {
+      const { data, tituloGrafico } = payload;
+      return {
+        ...state,
+        byYear: {
+          title: {
+            text: tituloGrafico,
+          },
+          chart: {
+            width: 1000,
+            type: "bar",
+          },
+          series: [
+            {
+              data: data,
+              keys: ["name"],
+              type: "pie",
+            },
+          ],
+        },
+      };
+    },
+    setCompareByYearData(state, payload) {
+      const { data, tituloGrafico } = payload;
+      return {
+        ...state,
+        compareByYears: {
+          title: {
+            text: tituloGrafico,
+          },
+          chart: {
+            width: 1000,
+          },
+          series: [
+            {
+              data: data,
+              keys: ["name"],
+              type: "bar",
+            },
+          ],
         },
       };
     },

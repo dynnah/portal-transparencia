@@ -67,3 +67,31 @@ export const requestComparationMinisterios = async (id, gov1, gov2) => {
     console.log(error);
   }
 };
+
+export const requestByYearDashboard = async (year) => {
+  try {
+    const response = await api.get(
+      `/grafico/consultaGastosPeriodoAno?ano1=${year}`
+    );
+    if (response.status === 200) {
+      const { data } = response;
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const requestCompareByYearsDashboard = async (year1, year2) => {
+  try {
+    const response = await api.get(
+      `/grafico/consultaGastosPeriodoAnos?ano1=${year1}&ano2=${year2}`
+    );
+    if (response.status === 200) {
+      const { data } = response;
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -8,8 +8,9 @@ import CostsDashboard from "./dashboards/CostsDashboard";
 import TimelineDashboard from "./dashboards/TimelineDashboard.jsx";
 import Intro from "./Intro.jsx";
 import { Main } from "./styles.js";
-import FunctionDashboard from "./dashboards/FunctionDashboard";
 import ComparationDashboard from "./dashboards/ComparationDashboard";
+import ByYearDashboard from "./dashboards/ByYearDashboard";
+import CompareYearsDashboard from "./dashboards/CompareYearsDashboard";
 
 const { dispatch } = store;
 
@@ -37,9 +38,10 @@ const Dashboard = () => {
       <Intro />
       <DashboardMinisterios />
       <CostsDashboard />
-      <FunctionDashboard />
       <TimelineDashboard />
       <ComparationDashboard />
+      <ByYearDashboard />
+      <CompareYearsDashboard />
     </Main>
   );
 };
