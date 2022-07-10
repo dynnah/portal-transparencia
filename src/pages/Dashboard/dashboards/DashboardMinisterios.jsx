@@ -48,7 +48,6 @@ class DashboardMinisterios extends Component {
     );
     client.send(null);
     let json = JSON.parse(client.responseText);
-    console.log(json.data);
     return {
       title: {
         text: json.tituloGrafico,

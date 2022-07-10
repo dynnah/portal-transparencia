@@ -7,6 +7,7 @@ const dashboard = {
     comparation: {},
     byYear: {},
     compareByYears: {},
+    comparationMinisterio: {},
   },
   reducers: {
     setMinisterios(state, payload) {
@@ -97,6 +98,22 @@ const dashboard = {
       return {
         ...state,
         comparation: {
+          title: {
+            text: tituloGrafico,
+          },
+          chart: {
+            width: 1000,
+            type: "bar",
+          },
+          series: data,
+        },
+      };
+    },
+    setComparationMinisterioData(state, payload) {
+      const { data, tituloGrafico } = payload;
+      return {
+        ...state,
+        comparationMinisterio: {
           title: {
             text: tituloGrafico,
           },

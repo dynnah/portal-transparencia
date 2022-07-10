@@ -68,6 +68,20 @@ export const requestComparationMinisterios = async (id, gov1, gov2) => {
   }
 };
 
+export const requestComparationMinisteriosValue = async (id) => {
+  try {
+    const response = await api.get(
+      `/grafico/consultaDiferencaValoresMinisterio?codOrgaoSuperior=${id}`
+    );
+    if (response.status === 200) {
+      const { data } = response;
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const requestByYearDashboard = async (year) => {
   try {
     const response = await api.get(

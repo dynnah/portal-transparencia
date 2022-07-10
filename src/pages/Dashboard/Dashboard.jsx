@@ -11,6 +11,7 @@ import { Main } from "./styles.js";
 import ComparationDashboard from "./dashboards/ComparationDashboard";
 import ByYearDashboard from "./dashboards/ByYearDashboard";
 import CompareYearsDashboard from "./dashboards/CompareYearsDashboard";
+import ComparationMinisterioDashboard from "./dashboards/ComparationMinisterioDashboard";
 
 const { dispatch } = store;
 
@@ -42,6 +43,7 @@ const Dashboard = () => {
       <ComparationDashboard />
       <ByYearDashboard />
       <CompareYearsDashboard />
+      <ComparationMinisterioDashboard />
     </Main>
   );
 };
