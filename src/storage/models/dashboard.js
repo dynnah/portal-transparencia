@@ -173,9 +173,9 @@ const dashboard = {
       return {
         ...state,
         byYear: {
-          ...state.byYear,
+          ...state?.byYear,
           chart: {
-            ...state.byYear.chart,
+            ...state?.byYear?.chart,
             type,
           },
         },
@@ -186,9 +186,9 @@ const dashboard = {
       return {
         ...state,
         ministeriosCosts: {
-          ...state.ministeriosCosts,
+          ...state?.ministeriosCosts,
           chart: {
-            ...state.ministeriosCosts.chart,
+            ...state?.ministeriosCosts?.chart,
             type,
           },
         },
