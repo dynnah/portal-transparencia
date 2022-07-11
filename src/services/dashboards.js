@@ -12,6 +12,18 @@ export const requestMinisterios = async () => {
   }
 };
 
+export const requestMinisteriosCosts = async () => {
+  try {
+    const response = await api.get("/grafico/consultaTodosOrgaosSuperiores");
+    if (response.status === 200) {
+      const { data } = response;
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const requestCostsMinisterios = async (id) => {
   try {
     const response = await api.get(

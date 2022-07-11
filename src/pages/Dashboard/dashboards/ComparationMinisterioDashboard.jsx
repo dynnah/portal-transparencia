@@ -8,7 +8,6 @@ import { requestComparationMinisteriosValue } from "../../../services/dashboards
 import { ChartContainer } from "../styles";
 import Select from "../../../components/Select";
 import store from "../../../storage";
-import { Row } from "../../../components/Basic/Containers";
 
 const { dispatch } = store;
 
@@ -42,13 +41,11 @@ const ComparationMinisterioDashboard = () => {
 
   return (
     <ChartContainer>
-      <Row>
-        <Select
-          options={ministerios}
-          selected={selected}
-          handleChange={handleChange}
-        />
-      </Row>
+      <Select
+        options={ministerios}
+        selected={selected}
+        handleChange={handleChange}
+      />
       <HighchartsReact
         highcharts={Highcharts}
         options={comparationMinisterio || {}}

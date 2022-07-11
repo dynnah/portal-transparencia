@@ -8,11 +8,33 @@ const dashboard = {
     byYear: {},
     compareByYears: {},
     comparationMinisterio: {},
+    ministeriosCosts: {},
   },
   reducers: {
     setMinisterios(state, payload) {
       return {
         ministerios: payload,
+      };
+    },
+    setMinisteriosCostsData(state, payload) {
+      const { data, tituloGrafico } = payload;
+      return {
+        ...state,
+        ministeriosCosts: {
+          title: {
+            text: tituloGrafico,
+          },
+          chart: {
+            width: 1000,
+            type: "pie",
+          },
+          series: [
+            {
+              data: data,
+              keys: ["name"],
+            },
+          ],
+        },
       };
     },
     setCostsData(state, payload) {
@@ -135,15 +157,40 @@ const dashboard = {
           },
           chart: {
             width: 1000,
-            type: "bar",
+            type: "pie",
           },
           series: [
             {
               data: data,
               keys: ["name"],
-              type: "pie",
             },
           ],
+        },
+      };
+    },
+    setByYearDisplayType(state, payload) {
+      const { type } = payload;
+      return {
+        ...state,
+        byYear: {
+          ...state.byYear,
+          chart: {
+            ...state.byYear.chart,
+            type,
+          },
+        },
+      };
+    },
+    setMinisteriosCostsDisplayType(state, payload) {
+      const { type } = payload;
+      return {
+        ...state,
+        ministeriosCosts: {
+          ...state.ministeriosCosts,
+          chart: {
+            ...state.ministeriosCosts.chart,
+            type,
+          },
         },
       };
     },

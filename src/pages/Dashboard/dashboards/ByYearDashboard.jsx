@@ -8,6 +8,7 @@ import { requestByYearDashboard } from "../../../services/dashboards";
 import { ChartContainer } from "../styles";
 import Select from "../../../components/Select";
 import store from "../../../storage";
+import { Row } from "../../../components/Basic/Containers";
 
 const { dispatch } = store;
 
@@ -30,6 +31,17 @@ const YEARS = Array.apply(null, Array(LIMIT_YEAR - MIN_YEAR)).map(
   }
 );
 
+const CHART_OPTIONS = [
+  {
+    label: "Pizza",
+    value: "pie",
+  },
+  {
+    label: "Barra",
+    value: "bar",
+  },
+];
+
 const ByYearDashboard = () => {
   const { byYear } = useSelector((state) => state.dashboard);
   const [selected, setSelected] = useState("");
@@ -46,9 +58,25 @@ const ByYearDashboard = () => {
     setSelected(value);
   };
 
+  const handleDisplayTypeChange = (event) => {
+    const { value } = event.target;
+    dispatch.dashboard.setByYearDisplayType({ type: value });
+  };
+
   return (
     <ChartContainer>
-      <Select options={YEARS} selected={selected} handleChange={handleChange} />
+      <Row>
+        <Select
+          options={YEARS}
+          selected={selected}
+          handleChange={handleChange}
+        />
+        <Select
+          options={CHART_OPTIONS}
+          selected={byYear?.chart?.type}
+          handleChange={handleDisplayTypeChange}
+        />
+      </Row>
       <HighchartsReact
         highcharts={Highcharts}
         options={byYear || {}}
